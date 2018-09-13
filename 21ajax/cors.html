@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //跨浏览器的CORS
+    //实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。
+    function createCORSRequest(method,url) {
+        var xhr = new XMLHttpRequest();
+        if("withCredentials" in xhr){
+            xhr.open(method,url,true)
+        }else if(typeof XDomainRequest != "undefined"){
+            xhr = new XDomainRequest();
+            xhr.open(method,url);
+        }else{
+            xhr = null;
+        }
+        return xhr;
+    }
+
+    var request = createCORSRequest("get","http://gamesafe.qq.com/api/query/senior_verify?_=1536825285439");
+    if(request){
+        request.onload = function () {
+            console.log(request)
+        };
+        request.send();
+    }
+</script>
+</body>
+</html>

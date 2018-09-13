@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //兼容ie7以上的做法
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState == 4){
+            alert(xhr.responseText)
+        }
+    };
+    //open方法启动一个请求以备发送
+    xhr.open("get","test.json",true)//第三个参数表示是否异步发送请求
+    //设置头部信息 Request Headers 里可以看到设置的值
+    xhr.setRequestHeader("MyHeader","MyValue");
+    //send ()方法接收一个参数，要作为请求主体发送的数据，如果不需要通过请求主体发送数据，则必须传入null
+    xhr.send(null);
+    console.log(xhr.status)
+</script>
+</body>
+</html>
