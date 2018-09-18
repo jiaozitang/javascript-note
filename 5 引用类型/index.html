@@ -51,12 +51,108 @@
        re = /car/g;
        console.log(re.test("cargfg"));
    }*/
-    var p = /(\d{3})(\d{4})(\d{3})/;
+    /*var p = /(\d{3})(\d{4})(\d{3})/;
     var phone = 13077023515
     if(p.test(phone)){
         phone = RegExp.$1 + '****' + RegExp.$3;
     }
-    console.log(phone)
+    console.log(phone)*/
+    /*var s = 6217025985207402896;
+    var len = Math.ceil(s.toString().length/4);
+    var p_str = '';
+    var tihuan = ""
+    for(var i=0;i<len;i++){
+        tihuan+="$"+(i+1)+ " "
+        if(i == len-1){
+            p_str+='(\\d{1,4})';
+        }else{
+            p_str+='(\\d{4})';
+        }
+    }
+    var p = new RegExp(p_str,"g");
+    console.log(s.toString().replace(p,tihuan))*/
+    //纯数字的数组排序推荐方法
+    /*var arr = [1,4,14,6,9];
+    function compare(val1,val2) {
+        console.log(val1)
+        //return val1-val2;//倒序为return val2-val1
+    }
+    arr.sort(compare);*/
+    //console.log(arr);//[1, 4, 6, 9, 14]
+    //比较全面的排序方法
+    var arr_str = [1,'a','abc','66'];
+    /*function compare(val1,val2) {
+        console.log(arguments)
+        if(val1 > val2){
+            return 1;
+        }else if(val1 < val2){
+            return -1;
+        }else{
+            return 1;
+        }
+    }*/
+    var indexFun = {
+        arr_str : [1,'a','abc','66'],
+
+        mySort : function (a,b,c) {
+            console.log(this)
+        },
+
+        init:function(){
+            arr_str.sort(this.mySort.bind(indexFun));//this为indexFun
+            arr_str.sort(this.mySort.call(indexFun));//this为indexFun
+            arr_str.sort(this.mySort.apply(indexFun));//this为indexFun
+            arr_str.sort(this.mySort);//this为window
+        }
+
+    };
+    indexFun.init();
+    //console.log(arr_str);//["a", "abc", 1, "66"]
+    var obj = [
+        {a:1, b:'a', c:'aaa'},
+        {a:2, b:'A', c:5},
+        {a:3, b:'a', c:'aaa'},
+        {a:4, b:'a', c:'aaa'},
+        {a:5, b:'a', c:'aaa'},
+    ];
+    function compareObj(propertyName){
+        //console.log(arguments)
+        return function () {
+            //console.log(arguments)
+            /*if(obj1[propertyName] > obj2[propertyName]){
+                return 1;
+            }else if(obj1[propertyName] < obj2[propertyName]){
+                return -1;
+            }else{
+                return 0;
+            }*/
+        }
+    }
+    obj.sort(compareObj('b'));//根据对象的b属性的大小排序
+    //console.log(obj);//[{a: 1, b: "a", c: "aaa"}, {a: 2, b: "A", c: 5}]
+    //obj.sort(compareObj('b'));//根据对象的b属性的大小排序
+    //console.log(obj);//[{a: 2, b: "A", c: 5},{a: 1, b: "a", c: "aaa"}]
+</script>
+<script>
+
+    /*var color = 1;
+    var o = {
+        color:2
+    };
+    function s() {
+        console.log(this.color)
+    };
+    s();
+    s.bind(o)();
+    s.call(o);
+    s.apply(o)*/
+    /*function sum(n1,n2) {
+        return n1 + n2;
+    }
+    function callSum1(n1,n2) {
+        return sum(n1,n2)
+    }
+    console.log(callSum1(2,3));*/
 </script>
 </body>
 </html>

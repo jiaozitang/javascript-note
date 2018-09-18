@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*var result = [];
+    var o = {
+        createFunction: function() {
+            return function(){
+                console.log(this)
+            }.bind(this)
+
+        }
+    }//
+    o.createFunction()();*/
+    /*function Test() {
+        var num = 1;
+        this.publicMethod = function () {
+            num++;
+            return num
+        }
+    }
+    var test1 = new Test();
+    console.log(test1.publicMethod());//2*/
+    /*function Person(name) {
+        this.getName = function () {
+            return name;
+        };
+        this.setName = function (val) {
+            name = val;
+        }
+    }
+    var person1 = new Person("tang");
+    console.log(person1.getName());//tang*/
+
+
+    var test = function () {
+        var arr = [1,2];
+        return {
+            pushArr:function (num) {
+                arr.push(num);
+                console.log(arr)
+            }
+        }
+    }
+    console.log(test().pushArr(345))
+
+</script>
+</body>
+</html>
